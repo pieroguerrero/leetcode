@@ -46,7 +46,7 @@ var maxProfit = function (prices) {
     return max;
 };
 
-////
+////teting
 
 const prices = [7, 1, 5, 3, 6, 4];
 
