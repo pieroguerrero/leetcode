@@ -32,35 +32,56 @@ var maxProfit = function (prices) {
     let max = 0;
     let minPrice = 100000;
 
-    for (let i = 0; i < prices.length; i++) {
+    let i;
+    let currentValue;
 
-        if (prices[i] < minPrice) {
-            minPrice = prices[i];
+    for (i = 0; i < prices.length; i++) {
 
-        } else if (prices[i] > minPrice) {
-            if (prices[i] - minPrice > max) {
-                max = prices[i] - minPrice;
-            }
+        currentValue = prices[i];
+
+        if (currentValue < minPrice) {
+
+            minPrice = currentValue;
+        } else if (currentValue - minPrice > max) {
+
+            max = currentValue - minPrice;
         }
     }
+    return max;
+};
 
-    // for (let i = 0; i < prices.length; i++) {
+var maxProfit2 = function (prices) {
 
-    //     for (let j = (i + 1); j < prices.length; j++) {
+    let max = 0;
+    let minPrice = 100000;
 
-    //         if (prices[j] - prices[i] > max) {
-    //             max = prices[j] - prices[i];
-    //         }
+    let i, currentValue;
+    const length = prices.length;
 
-    //     }
+    for (i = 0; i < length; i++) {
 
-    // }
+        currentValue = prices[i];
 
+        if (currentValue < minPrice) {
+
+            minPrice = currentValue;
+        } else if (currentValue - minPrice > max) {
+
+            max = currentValue - minPrice;
+        }
+    }
     return max;
 };
 
 ////teting
 
-const prices = [7, 1, 5, 3, 6, 4];
+const prices = [2, 4, 1, 7, 1, 5, 3, 6, 4, 56, 3, 5, 9, 123, 456, 3, 8, 7, 6, 5, 4, 1, 1, 9, 8, 4, 5, 6, 7, 8, 9, 1, 5, , 67, 45, 1, 2, 12, 10, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 1, 45, 67, 8, 3, 6, 5, 4, 3, 9, 8, 7, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 9, 8, 7, 6, 123];//[7,1,5,3,6,4];
 
-console.log(maxProfit(prices));
+// console.time("modified");
+// maxProfit2(prices);
+// console.timeEnd("modified");
+
+console.time("normal");
+maxProfit(prices);
+console.timeEnd("normal");
+
