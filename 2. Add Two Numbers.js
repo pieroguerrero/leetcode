@@ -27,7 +27,7 @@ var addTwoNumbers = function (l1, l2) {
     let partialResult;
     let carry = 0;
 
-    while (a || b) {
+    while (a || b || carry) {
 
         partialResult = ((a) ? a.val : 0) + ((b) ? b.val : 0) + carry;
 
