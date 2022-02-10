@@ -21,18 +21,34 @@ var addTwoNumbers = function (l1, l2) {
 
     let a = l1;
     let b = l2;
-    let total = 0;
-    let mult = 0;
+    let resultHead;
+
+    let previousNode;
+    let partialResult;
+    let carry = 0;
 
     while (a || b) {
 
-        if (mult === 0) {
-            mult = 1;
-        } else mult *= 10;
+        partialResult = ((a) ? a.val : 0) + ((b) ? b.val : 0) + carry;
 
-        total += a.val*mult + b.val*mult;
+        const resultNode = new ListNode();
 
+        if (partialResult < 10) {
+            resultNode.val = partialResult;
+            carry = 0
+        } else {
+            resultNode.val = partialResult - 10;
+            carry = 1;
+        }
+
+        if (!previousNode) {
+            resultHead = resultNode;
+        } else previousNode.next = resultNode;
+
+        previousNode = resultNode;
+        a = (a) ? a.next : null;
+        b = (b) ? b.next : null;
     }
 
-    //return a;
+    return resultHead;
 };
